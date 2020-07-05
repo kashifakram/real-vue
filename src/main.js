@@ -17,6 +17,7 @@ const requireComponent = require.context(
 );
 
 requireComponent.keys().forEach(fileName => {
+  console.log(`Global Component Name: ${fileName}`);
   // Get component config
   const componentConfig = requireComponent(fileName);
 
