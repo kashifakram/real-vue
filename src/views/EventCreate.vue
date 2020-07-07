@@ -83,22 +83,9 @@ export default {
         time: '',
         location: '',
         description: '',
-        organizer: user.name,
+        organizer: { user },
         category: '',
-        attendees: [
-          {
-            id: 'abc123',
-            name: 'Adam Jahr'
-          },
-          {
-            id: 'ghi789',
-            name: 'Beth Swanson'
-          },
-          {
-            id: 'jkl101',
-            name: 'Mary Gordon'
-          }
-        ]
+        attendees: []
       };
     }
   }

@@ -32,12 +32,20 @@ export default new Vuex.Store({
   mutations: {
     ADD_EVENT(st, payload) {
       st.events.push(payload);
+    },
+    ADD_EVENTS(st, payload) {
+      st.events = payload;
     }
   },
   actions: {
     createEvent({ commit }, event) {
       return EventService.createEvent(event).then(() => {
         commit('ADD_EVENT', event);
+      });
+    },
+    fetchEvents({ commit }) {
+      return EventService.getEvents().then(r => {
+        commit('ADD_EVENTS', r.data);
       });
     }
   },

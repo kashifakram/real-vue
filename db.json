@@ -7,7 +7,12 @@
       "time": "10:00",
       "location": "Daytona Beach",
       "description": "Let's clean up this beach.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "sustainability",
       "attendees": [
         {
@@ -35,7 +40,12 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "We're going to clean up this park.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "nature",
       "attendees": [
         {
@@ -79,7 +89,12 @@
       "time": "10:00",
       "location": "Daytona Beach",
       "description": "Let's clean up this beach.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "sustainability",
       "attendees": [
         {
@@ -107,7 +122,12 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "We're going to clean up this park.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "nature",
       "attendees": [
         {
@@ -151,7 +171,12 @@
       "time": "10:00",
       "location": "Daytona Beach",
       "description": "Let's clean up this beach.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "sustainability",
       "attendees": [
         {
@@ -179,7 +204,12 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "We're going to clean up this park.",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "nature",
       "attendees": [
         {
@@ -199,7 +229,12 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "Help animals find new homes.",
-      "organizer": "Gregg Pollack",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "animal welfare",
       "attendees": [
         {
@@ -243,7 +278,12 @@
       "time": "14:00",
       "location": "Sydney",
       "description": "Vue JS Diving Deep",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "education",
       "attendees": [
         {
@@ -271,7 +311,12 @@
       "time": "19:00",
       "location": "Parramatta",
       "description": "Rental options available in Parramatta",
-      "organizer": "Adam Jahr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "housing",
       "attendees": [
         {
@@ -287,6 +332,243 @@
           "name": "Mary Gordon"
         }
       ]
+    },
+    {
+      "id": 11,
+      "title": "Beach Cleanup",
+      "date": "Aug 28 2018",
+      "time": "10:00",
+      "location": "Daytona Beach",
+      "description": "Let's clean up this beach.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "sustainability",
+      "attendees": []
+    },
+    {
+      "id": 12,
+      "title": "Park Cleanup",
+      "date": "Nov 12 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "We're going to clean up this park.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "nature",
+      "attendees": []
+    },
+    {
+      "id": 13,
+      "title": "Pet Adoption Day",
+      "date": "Dec 2 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "Help animals find new homes.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "animal welfare",
+      "attendees": []
+    },
+    {
+      "id": 24,
+      "title": "Disco Party",
+      "date": "Aug 28 2018",
+      "time": "10:00",
+      "location": "Daytona Beach",
+      "description": "Let's clean up this beach.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "sustainability",
+      "attendees": []
+    },
+    {
+      "id": 15,
+      "title": "Vue Users Group",
+      "date": "Nov 12 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "We're going to clean up this park.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "nature",
+      "attendees": []
+    },
+    {
+      "id": 16,
+      "title": "Orlando Dev Meetup",
+      "date": "Dec 2 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "Help animals find new homes.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "animal welfare",
+      "attendees": []
+    },
+    {
+      "id": 27,
+      "title": "Yoga Class",
+      "date": "Aug 28 2018",
+      "time": "10:00",
+      "location": "Daytona Beach",
+      "description": "Let's clean up this beach.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "sustainability",
+      "attendees": []
+    },
+    {
+      "id": 38,
+      "title": "Breathing Meditation",
+      "date": "Nov 12 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "We're going to clean up this park.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "nature",
+      "attendees": []
+    },
+    {
+      "id": 39,
+      "title": "Dancing Class",
+      "date": "Dec 2 2018",
+      "time": "12:00",
+      "location": "132 N Magnolia Street, Orlando, Florida",
+      "description": "Help animals find new homes.",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "animal welfare",
+      "attendees": []
+    },
+    {
+      "id": 50,
+      "category": "animal welfare",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "title": "Gregg's Event",
+      "description": "We'll do stuff",
+      "location": "Your House",
+      "date": "",
+      "time": "5:00",
+      "attendees": []
+    },
+    {
+      "id": 3555257,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Vue",
+      "date": "2020-07-24T05:30:00.000Z",
+      "time": "14:00",
+      "location": "Sydney",
+      "description": "Vue JS Diving Deep",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "education",
+      "attendees": []
+    },
+    {
+      "id": 1526234,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Rental",
+      "date": "2020-07-08T06:21:00.000Z",
+      "time": "19:00",
+      "location": "Parramatta",
+      "description": "Rental options available in Parramatta",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "housing",
+      "attendees": []
+    },
+    {
+      "id": 6908821,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Fish",
+      "date": "2020-07-11T07:06:00.000Z",
+      "time": "13:00",
+      "location": "Sydney",
+      "description": "Fish benefits",
+      "organizer": {
+        "user": { "id": "abc123", "name": "Adam Jahr" }
+      },
+      "category": "food",
+      "attendees": []
+    },
+    {
+      "id": 7541332,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Welfare",
+      "date": "",
+      "time": "",
+      "location": "Merrylands",
+      "description": "Old welfare",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
+      "category": "community",
+      "attendees": []
     }
   ]
 }

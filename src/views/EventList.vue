@@ -7,22 +7,21 @@
 
 <script>
 import EventCard from '@/components/EventCard.vue';
-import EventService from '@/services/EventService';
+import { mapState } from 'vuex';
 export default {
   components: {
     EventCard
   },
-  data() {
-    return {
-      events: []
-    };
-  },
   created() {
-    EventService.getEvents()
-      .then(rsp => {
-        this.events = rsp.data;
+    this.$store
+      .dispatch('fetchEvents')
+      .then(() => {
+        console.log('All events loaded');
       })
-      .catch(err => console.log(err));
-  }
+      .catch(() => {
+        console.log("Events can't be fetched at startup");
+      });
+  },
+  computed: mapState(['events'])
 };
 </script>
