@@ -13,8 +13,8 @@ const axiosObj = {
 const apiClient = axios.create(axiosObj);
 
 export default {
-  getEvents() {
-    return apiClient.get('/events');
+  getEvents(perPage, page) {
+    return apiClient.get('/events?_limit=' + perPage + '&_page=' + page);
   },
   getEvent(id) {
     return apiClient.get('/events/' + id);

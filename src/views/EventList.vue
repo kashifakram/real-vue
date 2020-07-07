@@ -2,6 +2,10 @@
   <div>
     <h1>Event Listing</h1>
     <EventCard v-for="e in events" :key="e.id" :event="e" />
+    <template v-if="page != 1">
+      <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev"> Prev Page  </router-link> | 
+    </template>
+    <router-link :to="{name: 'event-list', query: {page: page + 1}}" rel="next"> Next Page </router-link>
   </div>
 </template>
 
@@ -14,7 +18,7 @@ export default {
   },
   created() {
     this.$store
-      .dispatch('fetchEvents')
+      .dispatch('fetchEvents', { perPage: 3, page: this.page })
       .then(() => {
         console.log('All events loaded');
       })
@@ -22,6 +26,11 @@ export default {
         console.log("Events can't be fetched at startup");
       });
   },
-  computed: mapState(['events'])
+  computed: {
+    page() {
+      return parseInt(this.$route.query.page) || 1;
+    },
+    ...mapState(['events'])
+  }
 };
 </script>
