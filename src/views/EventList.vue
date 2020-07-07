@@ -3,9 +3,11 @@
     <h1>Event Listing</h1>
     <EventCard v-for="e in events" :key="e.id" :event="e" />
     <template v-if="page != 1">
-      <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev"> Prev Page  </router-link> | 
+      <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev"> Prev Page  </router-link>
+    </template> &nbsp;&nbsp;&nbsp;&nbsp;
+    <template v-if="loadedEvents < totalEvents">
+      <router-link :to="{name: 'event-list', query: {page: page + 1}}" rel="next"> Next Page  </router-link>
     </template>
-    <router-link :to="{name: 'event-list', query: {page: page + 1}}" rel="next"> Next Page </router-link>
   </div>
 </template>
 
@@ -30,7 +32,10 @@ export default {
     page() {
       return parseInt(this.$route.query.page) || 1;
     },
-    ...mapState(['events'])
+    loadedEvents() {
+      return 3 * this.page;
+    },
+    ...mapState(['events', 'totalEvents'])
   }
 };
 </script>

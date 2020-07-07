@@ -11,6 +11,7 @@ export default new Vuex.Store({
       name: 'Adam Jahr'
     },
     events: [],
+    event: {},
     categories: [
       'sustainability',
       'nature',
@@ -27,7 +28,8 @@ export default new Vuex.Store({
       { id: 4, text: '...', done: false },
       { id: 5, text: '...', done: true },
       { id: 6, text: '...', done: false }
-    ]
+    ],
+    totalEvents: 0
   },
   mutations: {
     ADD_EVENT(st, payload) {
@@ -35,6 +37,12 @@ export default new Vuex.Store({
     },
     ADD_EVENTS(st, payload) {
       st.events = payload;
+    },
+    SET_EVENT_COUNTS(st, payload) {
+      st.totalEvents = parseInt(payload);
+    },
+    SET_EVENT(st, payload) {
+      st.event = payload;
     }
   },
   actions: {
@@ -45,8 +53,19 @@ export default new Vuex.Store({
     },
     fetchEvents({ commit }, { perPage, page }) {
       return EventService.getEvents(perPage, page).then(r => {
+        commit('SET_EVENT_COUNTS', r.headers['x-total-count']);
         commit('ADD_EVENTS', r.data);
       });
+    },
+    fetchEvent({ commit, getters }, id) {
+      const event = getters.getEventById(id);
+      if (!event) {
+        EventService.getEvent(id).then(response => {
+          commit('SET_EVENT', response.data);
+        });
+      } else {
+        commit('SET_EVENT', event);
+      }
     }
   },
   getters: {
@@ -55,6 +74,7 @@ export default new Vuex.Store({
     activeTasks: s => s.todos.filter(td => !td.done),
     totalCompletedTasks: (s, g) => g.completedTasks.length,
     totalActiveTasks: (s, g) => s.todos.length - g.totalCompletedTasks,
-    getTaskById: s => id => s.todos.find(td => td.id === id)
+    getTaskById: s => id => s.todos.find(td => td.id === id),
+    getEventById: s => id => s.events.find(ev => ev.id === id)
   }
 });
