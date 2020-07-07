@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Event Listing</h1>
-
     <EventCard v-for="e in events" :key="e.id" :event="e" />
   </div>
 </template>
@@ -22,10 +21,8 @@ export default {
     EventService.getEvents()
       .then(rsp => {
         this.events = rsp.data;
-        console.log(`Original Response:`, rsp);
       })
-      .catch(err => console.log(err))
-      .then(() => console.log(`Response completed...`));
+      .catch(err => console.log(err));
   }
 };
 </script>

@@ -8,9 +8,6 @@
       <h4 class="title">{{ event.title }}</h4>
       <BaseIcon name="users">
         <h4>{{ event.attendees.length }} attending</h4>
-        <template slot="para">
-          <p>Paragraph Itself Is Here!!!</p>
-        </template>
       </BaseIcon>
     </div>
   </router-link>

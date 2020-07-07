@@ -231,6 +231,62 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 3558857,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Vue",
+      "date": "2020-07-24T05:30:00.000Z",
+      "time": "14:00",
+      "location": "Sydney",
+      "description": "Vue JS Diving Deep",
+      "organizer": "Adam Jahr",
+      "category": "education",
+      "attendees": [
+        {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        },
+        {
+          "id": "ghi789",
+          "name": "Beth Swanson"
+        },
+        {
+          "id": "jkl101",
+          "name": "Mary Gordon"
+        }
+      ]
+    },
+    {
+      "id": 9526234,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Rental",
+      "date": "2020-07-08T06:21:00.000Z",
+      "time": "19:00",
+      "location": "Parramatta",
+      "description": "Rental options available in Parramatta",
+      "organizer": "Adam Jahr",
+      "category": "housing",
+      "attendees": [
+        {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        },
+        {
+          "id": "ghi789",
+          "name": "Beth Swanson"
+        },
+        {
+          "id": "jkl101",
+          "name": "Mary Gordon"
+        }
+      ]
     }
   ]
 }
