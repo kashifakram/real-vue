@@ -545,7 +545,10 @@
       "location": "Sydney",
       "description": "Fish benefits",
       "organizer": {
-        "user": { "id": "abc123", "name": "Adam Jahr" }
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
       },
       "category": "food",
       "attendees": []
@@ -568,6 +571,26 @@
         }
       },
       "category": "community",
+      "attendees": []
+    },
+    {
+      "id": 5358928,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "Plant Trees",
+      "date": "2020-07-10T02:07:00.000Z",
+      "time": "14:00",
+      "location": "Forest",
+      "description": "Planting 100 trees",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "nature",
       "attendees": []
     }
   ]

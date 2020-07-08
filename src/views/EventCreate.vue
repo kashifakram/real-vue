@@ -53,7 +53,7 @@ export default {
     for (let i = 1; i <= 24; i++) times.push(i + ':00');
     return {
       times,
-      categories: this.$store.state.categories,
+      categories: this.$store.state.categories.categories,
       event: this.createFreshEvent()
     };
   },
@@ -73,7 +73,7 @@ export default {
         });
     },
     createFreshEvent() {
-      const user = this.$store.state.user;
+      const user = this.$store.state.user.user;
       const eventId = Math.floor(Math.random() * 10000000);
       return {
         id: eventId,
