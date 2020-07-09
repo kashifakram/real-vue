@@ -19,7 +19,7 @@ export default {
   getEvent(id) {
     return apiClient.get('/events/' + id);
   },
-  createEvent(event) {
+  postEvent(event) {
     return apiClient.post('/events/', event);
   }
 };

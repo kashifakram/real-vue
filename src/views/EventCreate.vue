@@ -60,7 +60,7 @@ export default {
   methods: {
     createEvent() {
       this.$store
-        .dispatch('createEvent', this.event)
+        .dispatch('event/createEvent', this.event)
         .then(() => {
           this.$router.push({
             name: 'event-show',
@@ -68,9 +68,7 @@ export default {
           });
           this.event = this.createFreshEvent();
         })
-        .catch(() => {
-          console.log('There was problem in creating event');
-        });
+        .catch(() => {});
     },
     createFreshEvent() {
       const user = this.$store.state.user.user;

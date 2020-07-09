@@ -28,24 +28,57 @@ export const actions = {
     console.log('Event user is ' + rootState.user.user.name);
 
     //second parameter is payload to send to action from other module
-    dispatch('todos/getTodo', null, { root: true });
+    dispatch('getTodo', null, { root: true });
 
-    return EventService.createEvent(event).then(() => {
-      commit('ADD_EVENT', event);
-    });
+    return EventService.postEvent(event)
+      .then(() => {
+        commit('ADD_EVENT', event);
+
+        const successNoti = {
+          type: 'success',
+          message: 'Event ' + event.id + ' created successfully!'
+        };
+        dispatch('notification/add', successNoti, { root: true });
+        console.log(successNoti);
+      })
+      .catch(e => {
+        const errorNoti = {
+          type: 'error',
+          message: 'error creating event ' + event.title + ' ' + e.message
+        };
+        dispatch('notification/add', errorNoti, { root: true });
+        console.log(errorNoti);
+        throw e;
+      });
   },
-  fetchEvents({ commit }, { perPage, page }) {
-    return EventService.getEvents(perPage, page).then(r => {
-      commit('SET_EVENT_COUNTS', r.headers['x-total-count']);
-      commit('ADD_EVENTS', r.data);
-    });
+  fetchEvents({ commit, dispatch }, { perPage, page }) {
+    EventService.getEvents(perPage, page)
+      .then(r => {
+        commit('SET_EVENT_COUNTS', r.headers['x-total-count']);
+        commit('ADD_EVENTS', r.data);
+      })
+      .catch(e => {
+        const errorNoti = {
+          type: 'error',
+          message: 'There is an error while fetching events: ' + e.message
+        };
+        dispatch('notification/add', errorNoti, { root: true });
+      });
   },
-  fetchEvent({ commit, getters }, id) {
+  fetchEvent({ commit, dispatch, getters }, id) {
     const event = getters.getEventById(id);
     if (!event) {
-      EventService.getEvent(id).then(response => {
-        commit('SET_EVENT', response.data);
-      });
+      EventService.getEvent(id)
+        .then(response => {
+          commit('SET_EVENT', response.data);
+        })
+        .catch(e => {
+          const errorNoti = {
+            type: 'error',
+            message: 'There is an error while fetching event: ' + e.message
+          };
+          dispatch('notification/add', errorNoti, { root: true });
+        });
     } else {
       commit('SET_EVENT', event);
     }

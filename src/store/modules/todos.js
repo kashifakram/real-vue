@@ -16,3 +16,9 @@ export const getters = {
   totalActiveTasks: (s, g) => s.todos.length - g.totalCompletedTasks,
   getTaskById: s => id => s.todos.find(td => td.id === id)
 };
+
+export const actions = {
+  getTodo() {
+    console.log('inside todos module and getTodo action');
+  }
+};
