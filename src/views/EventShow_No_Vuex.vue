@@ -1,10 +1,8 @@
 <template>
   <div>
     <div class="event-header">
+      <h1 class="title">No Vuex for {{ event.title }}</h1>
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
-      <h1 class="title">{{ event.title }}</h1>
-      <h5>Organized by {{ event.organizer ? event.organizer.user.name : '' }}</h5>
-      <h5>Category: {{ event.category }}</h5>
     </div>
 
     <BaseIcon name="map"><h2>Location</h2></BaseIcon>
@@ -14,35 +12,17 @@
     <h2>Event details</h2>
     <p>{{ event.description }}</p>
 
-    <h2>Attendees
-      <span class="badge -fill-gradient">{{ event.attendees ? event.attendees.length : 0 }}</span>
-    </h2>
-    <ul class="list-group">
-      <li v-for="(attendee, index) in event.attendees" :key="index" class="list-item">
-        <b>{{ attendee.name }}</b>
-      </li>
-    </ul>
     <button @click.prevent="saved = !saved" style="margin-top: 10px;">Save</button>
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
-import NProgress from 'nprogress';
-import store from '@/store/store';
 export default {
   data() {
     return {
       saved: false
     };
   },
-  props: ['id'],
-  beforeRouteEnter(routeTo, routeFrom, next) {
-    NProgress.start();
-    store.dispatch('event/fetchEvent', routeTo.params.id).then(() => {
-      NProgress.done();
-      next();
-    });
-  },
+  props: { event: { type: Object, required: true } },
   beforeRouteLeave(routeTo, routeFrom, next) {
     let result = false;
     if (!this.saved) {
@@ -53,8 +33,7 @@ export default {
   },
   beforeRouteUpdate() {
     window.alert('Saved ? ' + this.saved);
-  },
-  computed: mapState({ event: state => state.event.event })
+  }
 };
 </script>
 <style scoped>

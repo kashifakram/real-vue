@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Event for {{ user.user.name }} </h1>
-    <EventCard v-for="e in event.events" :key="e.id" :event="e" />
+    <div v-for="e in event.events" :key="e.id">
+      <EventCard  :event="e" />
+      <EventCardNoVuex :event="e" />
+      <br />
+    </div>
     <template v-if="page != 1">
       <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev">Prev Page</router-link>
       <template v-if="hasNextPage"> | </template>
@@ -12,10 +16,12 @@
 
 <script>
 import EventCard from '@/components/EventCard.vue';
+import EventCardNoVuex from '@/components/EventCard_No_Vuex.vue';
 import { mapState } from 'vuex';
 export default {
   components: {
-    EventCard
+    EventCard,
+    EventCardNoVuex
   },
   created() {
     this.$store

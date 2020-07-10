@@ -66,8 +66,6 @@ export const actions = {
       });
   },
   fetchEvent({ commit, dispatch }, id) {
-    // const event = getters.getEventById(id);
-    // if (!event) {
     return EventService.getEvent(id)
       .then(response => {
         commit('SET_EVENT', response.data);
@@ -79,11 +77,29 @@ export const actions = {
         };
         dispatch('notification/add', errorNoti, { root: true });
       });
-    // } else {
-    //   commit('SET_EVENT', event);
+  },
+  fetchEventNoVuex({ commit, dispatch, getters }, id) {
+    const event = getters.getEventById(id);
+    if (!event) {
+      return EventService.getEvent(id)
+        .then(response => {
+          commit('SET_EVENT', response.data);
+          return response.data;
+        })
+        .catch(e => {
+          const errorNoti = {
+            type: 'error',
+            message: 'There is an error while fetching event: ' + e.message
+          };
+          dispatch('notification/add', errorNoti, { root: true });
+        });
+    } else {
+      commit('SET_EVENT', event);
+      return event;
+    }
   }
 };
 
-// export const getters = {
-//   getEventById: s => id => s.events.find(ev => ev.id === id)
-// };
+export const getters = {
+  getEventById: s => id => s.events.find(ev => ev.id === id)
+};
