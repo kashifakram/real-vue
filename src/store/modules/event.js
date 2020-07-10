@@ -65,26 +65,25 @@ export const actions = {
         dispatch('notification/add', errorNoti, { root: true });
       });
   },
-  fetchEvent({ commit, dispatch, getters }, id) {
-    const event = getters.getEventById(id);
-    if (!event) {
-      EventService.getEvent(id)
-        .then(response => {
-          commit('SET_EVENT', response.data);
-        })
-        .catch(e => {
-          const errorNoti = {
-            type: 'error',
-            message: 'There is an error while fetching event: ' + e.message
-          };
-          dispatch('notification/add', errorNoti, { root: true });
-        });
-    } else {
-      commit('SET_EVENT', event);
-    }
+  fetchEvent({ commit, dispatch }, id) {
+    // const event = getters.getEventById(id);
+    // if (!event) {
+    return EventService.getEvent(id)
+      .then(response => {
+        commit('SET_EVENT', response.data);
+      })
+      .catch(e => {
+        const errorNoti = {
+          type: 'error',
+          message: 'There is an error while fetching event: ' + e.message
+        };
+        dispatch('notification/add', errorNoti, { root: true });
+      });
+    // } else {
+    //   commit('SET_EVENT', event);
   }
 };
 
-export const getters = {
-  getEventById: s => id => s.events.find(ev => ev.id === id)
-};
+// export const getters = {
+//   getEventById: s => id => s.events.find(ev => ev.id === id)
+// };
