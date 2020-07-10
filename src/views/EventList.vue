@@ -3,11 +3,10 @@
     <h1>Event for {{ user.user.name }} </h1>
     <EventCard v-for="e in event.events" :key="e.id" :event="e" />
     <template v-if="page != 1">
-      <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev"> Prev Page  </router-link>
-    </template> &nbsp;&nbsp;&nbsp;&nbsp;
-    <template v-if="loadedEvents < event.totalEvents">
-      <router-link :to="{name: 'event-list', query: {page: page + 1}}" rel="next"> Next Page  </router-link>
-    </template>
+      <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev">Prev Page</router-link>
+      <template v-if="hasNextPage"> | </template>
+    </template> 
+      <router-link v-if="hasNextPage" :to="{name: 'event-list', query: {page: page + 1}}" rel="next">Next Page</router-link>
   </div>
 </template>
 
@@ -36,6 +35,11 @@ export default {
       return 3 * this.page;
     },
     ...mapState(['event', 'user'])
+  },
+  methods: {
+    hasNextPage() {
+      return this.loadedEvents < this.event.totalEvents;
+    }
   }
 };
 </script>
