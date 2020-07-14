@@ -2,41 +2,26 @@
     <div>
         <h1>Create an Event</h1>
         <form @submit.prevent="createEvent">
-            <label>Select a category</label>
-            <select v-model="event.category">
-                <option v-for="cat in categories" :key="cat">{{ cat }}</option>
-            </select>
+            <BaseSelect label="Select Category" :options="categories" v-model="event.category"  class="field" />
 
             <h3>Name & describe your event</h3>
-            <div class="field">
-                <label>Title</label>
-                <input type="text" v-model="event.title" placeholder="Event Title">
-            </div>
+            <BaseInput  type="text" placeholder="Enent Title" label="Title" v-model="event.title" class="field" />
 
-            <div class="field">
-                <label>Description</label>
-                <input type="text" v-model="event.description" placeholder="Event Description">
-            </div>
+            <BaseInput  type="text" placeholder="Enent Description" label="Description" v-model="event.description" class="field" />
 
             <h3>Where is your event?</h3>
-            <div class="field">
-                <label>Location</label>
-                <input type="text" v-model="event.location" placeholder="Event Location">
-            </div>
+            <BaseInput  type="text" placeholder="Enent Location" label="Location" v-model="event.location" class="field" />
 
             <h3>When is your event?</h3>
             <div class="field">
                 <label>Date</label>
                 <datepicker v-model="event.date" placeholder="Select Date"></datepicker>
             </div>
-            <div class="field">
-                <label>Select Time</label>
-                <select v-model="event.time">
-                    <option v-for="t in times" :key="t"> {{ t }} </option>
-                </select>
-            </div>
 
-            <input type="submit" class="button -fill-gradient" value="Submit">
+            <BaseSelect label="Select Time" :options="times" v-model="event.time"  class="field" />
+
+            <!-- <input type="submit" class="button -fill-gradient" value="Submit"> -->
+            <BaseButton type="submit" buttonClass="-fill-gradient">Submit Form</BaseButton>
         </form>
     </div>
 </template>

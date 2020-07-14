@@ -917,6 +917,28 @@
       },
       "category": "food",
       "attendees": []
+    },
+    {
+      "id": 2855176,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "Housing",
+      "date": "2020-07-09T08:34:00.000Z",
+      "time": "20:00",
+      "location": "CBD",
+      "description": "Desc",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "housing",
+      "attendees": [],
+      "Description": "ads",
+      "Location": "ds"
     }
   ]
 }
