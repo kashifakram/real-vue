@@ -52,19 +52,11 @@ export const actions = {
         throw e;
       });
   },
-  fetchEvents({ commit, dispatch, state }, { page }) {
-    return EventService.getEvents(state.perPage, page)
-      .then(r => {
-        commit('SET_EVENT_COUNTS', r.headers['x-total-count']);
-        commit('ADD_EVENTS', r.data);
-      })
-      .catch(e => {
-        const errorNoti = {
-          type: 'error',
-          message: 'There is an error while fetching events: ' + e.message
-        };
-        dispatch('notification/add', errorNoti, { root: true });
-      });
+  fetchEvents({ commit, state }, { page }) {
+    return EventService.getEvents(state.perPage, page).then(r => {
+      commit('SET_EVENT_COUNTS', r.headers['x-total-count']);
+      commit('ADD_EVENTS', r.data);
+    });
   },
   fetchEvent({ commit, dispatch }, id) {
     return EventService.getEvent(id)
@@ -79,21 +71,13 @@ export const actions = {
         dispatch('notification/add', errorNoti, { root: true });
       });
   },
-  fetchEventNoVuex({ commit, dispatch, getters }, id) {
+  fetchEventNoVuex({ commit, getters }, id) {
     const event = getters.getEventById(id);
     if (!event) {
-      return EventService.getEvent(id)
-        .then(response => {
-          commit('SET_EVENT', response.data);
-          return response.data;
-        })
-        .catch(e => {
-          const errorNoti = {
-            type: 'error',
-            message: 'There is an error while fetching event: ' + e.message
-          };
-          dispatch('notification/add', errorNoti, { root: true });
-        });
+      return EventService.getEvent(id).then(response => {
+        commit('SET_EVENT', response.data);
+        return response.data;
+      });
     } else {
       commit('SET_EVENT', event);
       return event;

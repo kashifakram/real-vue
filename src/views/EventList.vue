@@ -22,10 +22,22 @@ import store from '@/store/store';
 
 function getPageEvents(to, next) {
   const currentPage = parseInt(to.query.page) || 1;
-  store.dispatch('event/fetchEvents', { page: currentPage }).then(() => {
-    to.params.page = currentPage;
-    next();
-  });
+  store
+    .dispatch('event/fetchEvents', { page: currentPage })
+    .then(() => {
+      to.params.page = currentPage;
+      next();
+    })
+    .catch(error => {
+      if (error.response && error.response.status === 404) {
+        const errorNoti = {
+          type: 'error',
+          message: 'There is an error while fetching events: ' + error.message
+        };
+        store.dispatch('notification/add', errorNoti, { root: true });
+        next({ name: '404', params: { source: 'page' } });
+      } else next({ name: 'network-issue' });
+    });
 }
 
 export default {

@@ -877,6 +877,46 @@
       },
       "category": "",
       "attendees": []
+    },
+    {
+      "id": 4628886,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "Sweing Shirts",
+      "date": "2020-07-18T05:55:00.000Z",
+      "time": "6:00",
+      "location": "Parramatta",
+      "description": "Learn to sew beautiful shirts for your beloved ones",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "nature",
+      "attendees": []
+    },
+    {
+      "id": 635841,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "Another Event",
+      "date": "2020-07-07T05:58:00.000Z",
+      "time": "11:00",
+      "location": "Sydney",
+      "description": "Description",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "food",
+      "attendees": []
     }
   ]
 }

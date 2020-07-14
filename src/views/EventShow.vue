@@ -38,10 +38,15 @@ export default {
   props: ['id'],
   beforeRouteEnter(routeTo, routeFrom, next) {
     NProgress.start();
-    store.dispatch('event/fetchEvent', routeTo.params.id).then(() => {
-      NProgress.done();
-      next();
-    });
+    store
+      .dispatch('event/fetchEvent', routeTo.params.id)
+      .then(() => {
+        NProgress.done();
+        next();
+      })
+      .catch(() => {
+        NProgress.done();
+      });
   },
   beforeRouteLeave(routeTo, routeFrom, next) {
     let result = false;

@@ -5,6 +5,7 @@ import EventList from '@/views/EventList.vue';
 import EventShow from '@/views/EventShow.vue';
 import EventShowNoVuex from '@/views/EventShow_No_Vuex';
 import NotFound from '@/views/NotFound.vue';
+import NetworkIssue from '@/views/NetworkIssue.vue';
 import NProgress from 'nprogress';
 import store from '@/store/store';
 
@@ -36,6 +37,17 @@ const router = new Router({
           .then(event => {
             routeTo.params.event = event;
             next();
+          })
+          .catch(error => {
+            if (error.response && error.response.status === 404) {
+              const errorNoti = {
+                type: 'error',
+                message:
+                  'There is an error while fetching event: ' + error.message
+              };
+              store.dispatch('notification/add', errorNoti, { root: true });
+              next({ name: '404', params: { source: 'event' } });
+            } else next({ name: 'network-issue' });
           });
       }
     },
@@ -46,8 +58,19 @@ const router = new Router({
       component: EventCreate
     },
     {
+      path: '/404',
+      name: '404',
+      component: NotFound,
+      props: true
+    },
+    {
+      name: 'network-issue',
+      path: '/network-issue',
+      component: NetworkIssue
+    },
+    {
       path: '*',
-      component: NotFound
+      redirect: { name: '404', params: { source: 'page' } }
     }
   ]
 });

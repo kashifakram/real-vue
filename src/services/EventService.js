@@ -4,7 +4,7 @@ import axios from 'axios';
 const axiosObj = {
   baseURL: '//localhost:3000',
   withCredentials: false,
-  // timeout: 1000,
+  timeout: 1000,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'
