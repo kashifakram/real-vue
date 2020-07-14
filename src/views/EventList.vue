@@ -18,34 +18,41 @@
 import EventCard from '@/components/EventCard.vue';
 import EventCardNoVuex from '@/components/EventCard_No_Vuex.vue';
 import { mapState } from 'vuex';
+import store from '@/store/store';
+
+function getPageEvents(to, next) {
+  const currentPage = parseInt(to.query.page) || 1;
+  store.dispatch('event/fetchEvents', { page: currentPage }).then(() => {
+    to.params.page = currentPage;
+    next();
+  });
+}
+
 export default {
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
   components: {
     EventCard,
     EventCardNoVuex
   },
-  created() {
-    this.$store
-      .dispatch('event/fetchEvents', { perPage: 3, page: this.page })
-      .then(() => {
-        console.log('All events loaded');
-      })
-      .catch(() => {
-        console.log("Events can't be fetched at startup");
-      });
+  beforeRouteEnter(to, from, next) {
+    getPageEvents(to, next);
+  },
+  beforeRouteUpdate(to, from, next) {
+    getPageEvents(to, next);
   },
   computed: {
-    page() {
-      return parseInt(this.$route.query.page) || 1;
-    },
     loadedEvents() {
-      return 3 * this.page;
+      return this.event.perPage * this.page;
     },
-    ...mapState(['event', 'user'])
-  },
-  methods: {
     hasNextPage() {
       return this.loadedEvents < this.event.totalEvents;
-    }
+    },
+    ...mapState(['event', 'user'])
   }
 };
 </script>
