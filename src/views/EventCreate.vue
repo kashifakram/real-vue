@@ -43,6 +43,9 @@ export default {
     };
   },
   methods: {
+    clicked() {
+      alert('clicked');
+    },
     createEvent() {
       NProgress.start();
       this.$store

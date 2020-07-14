@@ -6,6 +6,7 @@ import EventShow from '@/views/EventShow.vue';
 import EventShowNoVuex from '@/views/EventShow_No_Vuex';
 import NotFound from '@/views/NotFound.vue';
 import NetworkIssue from '@/views/NetworkIssue.vue';
+import VuelidateExample from '@/views/VuelidateExample.vue';
 import NProgress from 'nprogress';
 import store from '@/store/store';
 
@@ -19,6 +20,10 @@ const router = new Router({
       name: 'event-list',
       component: EventList,
       props: true
+    },
+    {
+      path: '/example',
+      component: VuelidateExample
     },
     {
       path: '/events/:id',
