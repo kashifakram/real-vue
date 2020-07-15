@@ -3,7 +3,7 @@
     <h1>Event for {{ user.user.name }} </h1>
     <div v-for="e in event.events" :key="e.id">
       <EventCard  :event="e" />
-      <EventCardNoVuex :event="e" />
+      <!-- <EventCardNoVuex :event="e" /> -->
       <br />
     </div>
     <template v-if="page != 1">
@@ -16,7 +16,7 @@
 
 <script>
 import EventCard from '@/components/EventCard.vue';
-import EventCardNoVuex from '@/components/EventCard_No_Vuex.vue';
+// import EventCardNoVuex from '@/components/EventCard_No_Vuex.vue';
 import { mapState } from 'vuex';
 import store from '@/store/store';
 
@@ -48,8 +48,8 @@ export default {
     }
   },
   components: {
-    EventCard,
-    EventCardNoVuex
+    EventCard
+    // EventCardNoVuex
   },
   beforeRouteEnter(to, from, next) {
     getPageEvents(to, next);

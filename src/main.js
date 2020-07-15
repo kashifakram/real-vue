@@ -6,6 +6,7 @@ import upperFirst from 'lodash/upperFirst';
 import camelCase from 'lodash/camelCase';
 import 'nprogress/nprogress.css';
 import Vuelidate from 'vuelidate';
+import DateFilter from '@/filters/date.js';
 
 Vue.use(Vuelidate);
 
@@ -15,6 +16,9 @@ Vue.mixin({
     console.log('Global mixin mounted');
   }
 });
+
+// Registering global date filter
+Vue.filter('date', DateFilter);
 
 // Vue.config.productionTip = false;
 

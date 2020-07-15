@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="event-header">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
-      <h1 class="title">{{ event.title }}</h1>
+      <span class="eyebrow">@{{ event.time }} on {{ event.date | date }}</span>
+      <h1 class="title">{{ event.title | upperCase }}</h1>
       <h5>Organized by {{ event.organizer ? event.organizer.user.name : '' }}</h5>
       <h5>Category: {{ event.category }}</h5>
     </div>
@@ -29,7 +29,9 @@
 import { mapState } from 'vuex';
 import NProgress from 'nprogress';
 import store from '@/store/store';
+import { stringFilters } from '@/mixins/stringFiltersMixin.js';
 export default {
+  mixins: [stringFilters],
   data() {
     return {
       saved: false

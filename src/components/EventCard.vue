@@ -3,29 +3,37 @@
     class="event-link"
     :to="{ name: 'event-show', params: { id: Number(event.id) } }"
   >
-    <div class="event-card -shadow">
-      <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
-      <h4 class="title">{{ event.title }}</h4>
-      <BaseIcon name="users">
-        <h4>{{ event.attendees.length }} attending</h4>
-      </BaseIcon>
-    </div>
+      <div v-if="showCard" class="event-card -shadow">
+        <span class="eyebrow">@{{ event.time }} on {{ event.date | date }}</span>
+        <h4 class="title">{{ event.title }}</h4>
+        <BaseIcon name="users">
+          <h4>{{ event.attendees.length }} attending</h4>
+        </BaseIcon>
+      </div>
   </router-link>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      showCard: false
+    };
+  },
   props: {
     event: Object
+  },
+  mounted() {
+    this.showCard = true;
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .event-card {
   padding: 20px;
   margin-bottom: 24px;
-  transition: all 0.2s linear;
+  /* transition: all 0.2s linear; */
   cursor: pointer;
 }
 .event-card:hover {
