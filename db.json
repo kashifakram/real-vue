@@ -959,6 +959,146 @@
       },
       "category": "",
       "attendees": []
+    },
+    {
+      "id": 8156928,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "Mixin in VueJS",
+      "date": "2020-07-31T03:26:00.000Z",
+      "time": "13:00",
+      "location": "Melville Street",
+      "description": "All about mixins you want to know",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "education",
+      "attendees": []
+    },
+    {
+      "id": 2501569,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "fdsf",
+      "date": "2020-07-15T03:29:00.000Z",
+      "time": "17:00",
+      "location": "fsd",
+      "description": "fsdfs",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "community",
+      "attendees": []
+    },
+    {
+      "id": 2989022,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "fdsf",
+      "date": "2020-07-09T03:31:00.000Z",
+      "time": "19:00",
+      "location": "fsdf",
+      "description": "fdsfsd",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "education",
+      "attendees": []
+    },
+    {
+      "id": 6292351,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "fds",
+      "date": "2020-07-08T03:41:00.000Z",
+      "time": "11:00",
+      "location": "fsd",
+      "description": "fds",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "housing",
+      "attendees": []
+    },
+    {
+      "id": 9700054,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "fsd",
+      "date": "2020-07-10T03:42:00.000Z",
+      "time": "8:00",
+      "location": "fds",
+      "description": "fsdf",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "housing",
+      "attendees": []
+    },
+    {
+      "id": 1547857,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "rtr",
+      "date": "2020-07-01T03:45:00.000Z",
+      "time": "14:00",
+      "location": "trtr",
+      "description": "trtr",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "animal welfare",
+      "attendees": []
+    },
+    {
+      "id": 3775607,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "fsdffds",
+      "date": "2020-07-24T03:53:00.000Z",
+      "time": "14:00",
+      "location": "fsdf",
+      "description": "fdsfds",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "housing",
+      "attendees": []
     }
   ]
 }

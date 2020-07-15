@@ -1,25 +1,14 @@
 <template>
     <div>
         <label v-if="label">{{ label }}</label>
-        <input :value="value" @input="updateValue" v-bind="$attrs">
+        <input :value="value" @input="updateValue" v-bind="$attrs" v-on="listeners" >
     </div>
 </template>
 
 <script>
+import { formFieldMixin } from '@/mixins/formFieldMixin.js';
 export default {
-  inheritAttrs: false,
-  props: {
-    label: {
-      type: String,
-      default: ''
-    },
-    value: [String, Number]
-  },
-  methods: {
-    updateValue(e) {
-      this.$emit('input', e.target.value);
-    }
-  }
+  mixins: [formFieldMixin]
 };
 </script>
 

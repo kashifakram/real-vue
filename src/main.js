@@ -9,6 +9,13 @@ import Vuelidate from 'vuelidate';
 
 Vue.use(Vuelidate);
 
+// Global mixins
+Vue.mixin({
+  mounted() {
+    console.log('Global mixin mounted');
+  }
+});
+
 // Vue.config.productionTip = false;
 
 const requireComponent = require.context(
