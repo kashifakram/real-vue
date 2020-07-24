@@ -152,7 +152,12 @@
       "time": "12:00",
       "location": "132 N Magnolia Street, Orlando, Florida",
       "description": "Help animals find new homes.",
-      "organizer": "Gregg Pollack",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam Jahr"
+        }
+      },
       "category": "animal welfare",
       "attendees": [
         {
@@ -1091,6 +1096,26 @@
       "time": "14:00",
       "location": "fsdf",
       "description": "fdsfds",
+      "organizer": {
+        "user": {
+          "id": "abc123",
+          "name": "Adam"
+        }
+      },
+      "category": "housing",
+      "attendees": []
+    },
+    {
+      "id": 4219651,
+      "user": {
+        "id": "abc123",
+        "name": "Adam"
+      },
+      "title": "sdfs",
+      "date": "2020-07-06T07:33:00.000Z",
+      "time": "6:00",
+      "location": "fds",
+      "description": "fds",
       "organizer": {
         "user": {
           "id": "abc123",

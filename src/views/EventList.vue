@@ -1,11 +1,12 @@
 <template>
   <div>
     <h1>Event for {{ user.user.name }} </h1>
-    <div v-for="e in event.events" :key="e.id">
-      <EventCard  :event="e" />
+    <transition-group tag="ul" appear name="slide-up">
+    <li v-for="e in event.events" :key="e.id" style="list-style:none">
+        <EventCard  :event="e" />
       <!-- <EventCardNoVuex :event="e" /> -->
-      <br />
-    </div>
+    </li>
+    </transition-group>
     <template v-if="page != 1">
       <router-link :to="{name: 'event-list', query: {page: page - 1}}" rel="prev">Prev Page</router-link>
       <template v-if="hasNextPage"> | </template>
@@ -41,6 +42,11 @@ function getPageEvents(to, next) {
 }
 
 export default {
+  data() {
+    return {
+      showEvent: false
+    };
+  },
   props: {
     page: {
       type: Number,
