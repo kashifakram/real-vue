@@ -9,6 +9,11 @@
       <div class="bar" :style="{ width: tweenedNumber + 'px'}">
           <span> {{ tweenedNumber.toFixed(0) }} </span>
       </div>
+      <div>
+          <img src="@/assets/runner.png" alt="runner" class="runner first">
+          <img src="@/assets/runner.png" alt="runner" class="runner second">
+          <img src="@/assets/runner.png" alt="runner" class="runner third">
+      </div>
   </div>
 </template>
 
@@ -59,6 +64,10 @@ export default {
     }
   },
   mounted() {
+    let tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+    tl.to('.first', { x: 400, duration: 2, ease: 'expo.out' });
+    tl.to('.second', { x: 400, duration: 2, ease: 'expo.out' }, '<.5');
+    tl.to('.third', { x: 400, duration: 2, ease: 'expo.out' }, '<');
     gsap.from('.icard', {
       duration: 0.5,
       opacity: 0,
@@ -113,5 +122,11 @@ export default {
 }
 .bar span {
   color: white;
+}
+.runner {
+  display: block;
+  height: 5em;
+  width: 5em;
+  margin-top: 1.5em;
 }
 </style>
