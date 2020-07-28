@@ -7,6 +7,7 @@ import camelCase from 'lodash/camelCase';
 import 'nprogress/nprogress.css';
 import Vuelidate from 'vuelidate';
 import DateFilter from '@/filters/date.js';
+import axios from 'axios';
 
 Vue.use(Vuelidate);
 
@@ -60,5 +61,19 @@ requireComponent.keys().forEach(fileName => {
 new Vue({
   router,
   store,
+  created() {
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      const userData = JSON.parse(userString);
+      this.$store.commit('SET_USER_DATA', userData);
+    }
+    axios.interceptors.response.use(
+      r => r,
+      e => {
+        if (e.response.status === 401) this.$store.dispatch('logout');
+        return Promise.reject(e);
+      }
+    );
+  },
   render: h => h(App)
 }).$mount('#app');

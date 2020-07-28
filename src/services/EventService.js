@@ -1,17 +1,9 @@
-import axios from 'axios';
+import {
+  jsonServerBaseUrl,
+  nodeServerBaseUrl,
+  apiClient
+} from '@/libs/constants.js';
 // import NProgress from 'nprogress';
-
-const axiosObj = {
-  baseURL: '//localhost:3000',
-  withCredentials: false,
-  timeout: 1000,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
-  }
-};
-
-const apiClient = axios.create(axiosObj);
 
 //commented out to implement via global route navigation guards
 
@@ -27,12 +19,19 @@ const apiClient = axios.create(axiosObj);
 
 export default {
   getEvents(perPage, page) {
-    return apiClient.get('/events?_limit=' + perPage + '&_page=' + page);
+    return apiClient.get(
+      jsonServerBaseUrl + '/events?_limit=' + perPage + '&_page=' + page
+    );
   },
+
+  getEvenEvents() {
+    return apiClient.get(nodeServerBaseUrl + '/dashboard');
+  },
+
   getEvent(id) {
-    return apiClient.get('/events/' + id);
+    return apiClient.get(jsonServerBaseUrl + '/events/' + id);
   },
   postEvent(event) {
-    return apiClient.post('/events/', event);
+    return apiClient.post(jsonServerBaseUrl + '/events/', event);
   }
 };

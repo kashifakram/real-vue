@@ -4,7 +4,7 @@
     <transition-group tag="ul" appear name="slide-up">
     <li v-for="e in event.events" :key="e.id" style="list-style:none">
         <EventCard  :event="e" />
-      <!-- <EventCardNoVuex :event="e" /> -->
+      <EventCardNoVuex :event="e" />
     </li>
     </transition-group>
     <template v-if="page != 1">
@@ -17,7 +17,7 @@
 
 <script>
 import EventCard from '@/components/EventCard.vue';
-// import EventCardNoVuex from '@/components/EventCard_No_Vuex.vue';
+import EventCardNoVuex from '@/components/EventCard_No_Vuex.vue';
 import { mapState } from 'vuex';
 import store from '@/store/store';
 
@@ -44,7 +44,8 @@ function getPageEvents(to, next) {
 export default {
   data() {
     return {
-      showEvent: false
+      showEvent: false,
+      evenEvents: false
     };
   },
   props: {
@@ -54,8 +55,8 @@ export default {
     }
   },
   components: {
-    EventCard
-    // EventCardNoVuex
+    EventCard,
+    EventCardNoVuex
   },
   beforeRouteEnter(to, from, next) {
     getPageEvents(to, next);

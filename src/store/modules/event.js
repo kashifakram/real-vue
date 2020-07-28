@@ -4,6 +4,7 @@ export const namespaced = true;
 
 export const state = {
   events: [],
+  evenEvents: [],
   event: {},
   perPage: 4,
   totalEvents: 0
@@ -15,6 +16,9 @@ export const mutations = {
   },
   ADD_EVENTS(st, payload) {
     st.events = payload;
+  },
+  ADD_EVEN_EVENTS(st, payload) {
+    st.evenEvents.push(payload);
   },
   SET_EVENT_COUNTS(st, payload) {
     st.totalEvents = parseInt(payload);
@@ -54,8 +58,15 @@ export const actions = {
   },
   fetchEvents({ commit, state }, { page }) {
     return EventService.getEvents(state.perPage, page).then(r => {
+      console.log(r.data);
       commit('SET_EVENT_COUNTS', r.headers['x-total-count']);
       commit('ADD_EVENTS', r.data);
+    });
+  },
+  fetchEvenEvents({ commit }) {
+    return EventService.getEvenEvents().then(r => {
+      console.log(r.data.events);
+      commit('ADD_EVEN_EVENTS', r.data.events);
     });
   },
   fetchEvent({ commit, dispatch }, id) {

@@ -1,95 +1,95 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import EventCreate from '@/views/EventCreate.vue';
-import EventList from '@/views/EventList.vue';
-import EventShow from '@/views/EventShow.vue';
-import EventShowNoVuex from '@/views/EventShow_No_Vuex';
-import NotFound from '@/views/NotFound.vue';
-import NetworkIssue from '@/views/NetworkIssue.vue';
-import VuelidateExample from '@/views/VuelidateExample.vue';
-import GroupTransition from '@/views/Animations/GroupTransition.vue';
-import JsHooks from '@/views/Animations/JsHooks.vue';
-import Gsap from '@/views/Animations/Gsap.vue';
-import NProgress from 'nprogress';
-import store from '@/store/store';
+import Routes from '@/libs/routelibs.js';
+import beforeEnter from '@/libs/navguards.js';
 
-Vue.use(Router);
+Routes.Vue.use(Routes.Router);
 
-const router = new Router({
+const router = new Routes.Router({
   mode: 'history',
   routes: [
     {
       path: '/',
       name: 'event-list',
-      component: EventList,
+      component: Routes.EventList,
       props: true
     },
     {
       path: '/example',
-      component: VuelidateExample
+      component: Routes.VuelidateExample
+    },
+    {
+      path: '/test',
+      component: Routes.test
     },
     {
       path: '/events/:id',
       name: 'event-show',
-      component: EventShow,
-      props: true
+      component: Routes.EventShow,
+      props: true,
+      beforeEnter(routeTo, routeFrom, next) {
+        beforeEnter(routeTo, routeFrom, next);
+      }
     },
     {
       path: '/events-no-vuex/:id',
       name: 'event-show-no-vuex',
-      component: EventShowNoVuex,
+      component: Routes.EventShowNoVuex,
       props: true,
       beforeEnter(routeTo, routeFrom, next) {
-        store
-          .dispatch('event/fetchEventNoVuex', routeTo.params.id)
-          .then(event => {
-            routeTo.params.event = event;
-            next();
-          })
-          .catch(error => {
-            if (error.response && error.response.status === 404) {
-              const errorNoti = {
-                type: 'error',
-                message:
-                  'There is an error while fetching event: ' + error.message
-              };
-              store.dispatch('notification/add', errorNoti, { root: true });
-              next({ name: '404', params: { source: 'event' } });
-            } else next({ name: 'network-issue' });
-          });
+        beforeEnter(routeTo, routeFrom, next);
       }
     },
-
+    {
+      path: '/user/:username',
+      name: 'userprofile',
+      component: Routes.UserProfile,
+      props: true
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Routes.RegisterUser
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Routes.LoginUser
+    },
+    {
+      path: '/even-events',
+      name: 'even-events',
+      component: Routes.EvenEventList,
+      meta: { requiresAuth: true }
+    },
     {
       path: '/event/create',
       name: 'event-create',
-      component: EventCreate
+      component: Routes.EventCreate
     },
     {
       path: '/group',
       name: 'group',
-      component: GroupTransition
+      component: Routes.GroupTransition
     },
     {
       path: '/gsap',
       name: 'gsap',
-      component: Gsap
+      component: Routes.Gsap
     },
     {
       path: '/hooks',
       name: 'hooks',
-      component: JsHooks
+      component: Routes.JsHooks
     },
     {
       path: '/404',
       name: '404',
-      component: NotFound,
+      component: Routes.NotFound,
       props: true
     },
     {
       name: 'network-issue',
       path: '/network-issue',
-      component: NetworkIssue
+      component: Routes.NetworkIssue
     },
     {
       path: '*',
@@ -99,12 +99,14 @@ const router = new Router({
 });
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  NProgress.start();
+  Routes.NProgress.start();
+  const loggedIn = localStorage.getItem('user');
+  if (routeTo.matched.some(r => r.meta.requiresAuth) && !loggedIn) next('/');
   next();
 });
 
 router.afterEach(() => {
-  NProgress.done();
+  Routes.NProgress.done();
   // no need to call next as this is last route navigation guard
 });
 

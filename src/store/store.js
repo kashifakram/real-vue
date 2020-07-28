@@ -5,6 +5,7 @@ import * as event from '@/store/modules/event.js';
 import * as todos from '@/store/modules/todos.js';
 import * as categories from '@/store/modules/categories.js';
 import * as notification from '@/store/modules/notification.js';
+import * as register from '@/store/modules/register.js';
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     event,
     categories,
     todos,
-    notification
+    notification,
+    register
   }
 });

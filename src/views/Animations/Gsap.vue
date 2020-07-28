@@ -58,9 +58,15 @@ export default {
   },
   methods: {
     playMasterTL() {
+      let p = false;
       masterTL.add(this.pawsTL());
       masterTL.add(this.foxTL());
-      masterTL.play();
+      masterTL
+        .play()
+        .then(() => (p = true))
+        .then(() => {
+          if (p) masterTL.clear(true);
+        });
     },
     pawsTL() {
       let tl = gsap.timeline();
@@ -201,7 +207,7 @@ export default {
   margin-right: 0.8em;
   opacity: 0;
 }
-button {
+/* button {
   margin-top: 1em;
-}
+} */
 </style>

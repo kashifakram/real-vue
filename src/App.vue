@@ -17,7 +17,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import './assets/styles/global_button.scss';
 html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
